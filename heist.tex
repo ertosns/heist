@@ -30,7 +30,17 @@ the attack can be fixed, by introducing unpredictable random parameter: $$\eta_i
 note! secret key is constrained 1 slot ahead (assume $N=1$ for simplicity), and grinding isn't possible since the staked coin is restricted from reward proposals for 1 slot, and $\eta{i-1}$ isn't known yet, omerta attack isn't possible since $hash(block_{i-2}))$ isn't known ahead of time.
 
 \subsection {perpetual lead with predictable block hash}
+
+
+
 slots are divided into N+2 cycles, (N is security parameter $N \ge 1$), adversary assume winning lottery in the consecutive slots i to i+N, with certain probability, then winning leadership at slot i+N+1 becomes highly probable, only the first block at slot i include a single stake transaction (note staked DRK execution is delayed to slot i+N+1), rest of blocks i+1 to i+N are left with empty transactions, then predicting $\eta_i$ to $\eta_{i+N+1}$ is possible, and thus grinding attack can be executed.
+
+\begin{figure}
+  \includegraphics[width=1.4\textwidth,left]{prob.png}
+  \caption{probability of attack for different security parameter}
+\end{figure}
+
+
 
 \section{chain fork}
 fork can occur when multiple stakeholders publish proposal for valid proof of leadership.
