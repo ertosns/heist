@@ -32,9 +32,8 @@ def plot_security_parameter():
         for f in [0.4, 0.5, 0.6, 0.7, 0.8]:
             stake_prob = pair_N_f(N, f)
             axis.plot([item[0] for item in stake_prob], [item[1]*100 for item in stake_prob], label='f is {}'.format(f))
-        axis.set_xlabel('relative stake %, N={}'.format(N))
+        axis.set_xlabel('relative stake')
         axis.set_ylabel('probability of winning %')
-        axis.set_label('N is {}'.format(N))
         axis.set_title('N is {}'.format(N))
         axis.legend()
         count+=1
