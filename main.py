@@ -33,7 +33,7 @@ def plot_security_parameter():
             stake_prob = pair_N_f(N, f)
             axis.plot([item[0] for item in stake_prob], [item[1]*100 for item in stake_prob], label='f is {}'.format(f))
         axis.set_xlabel('relative stake')
-        axis.set_ylabel('probability of winning %')
+        axis.set_ylabel('probability of successful attack %')
         axis.set_title('N is {}'.format(N))
         axis.legend()
         count+=1
@@ -42,5 +42,3 @@ plot_security_parameter()
 
 plt.show()
 figure.savefig('prob.png', bbox_inches=extent)
-#figure.set_figheight(5)
-#figure.savefig('prob.png',  dpi=600)
