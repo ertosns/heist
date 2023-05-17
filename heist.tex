@@ -36,11 +36,15 @@ note! secret key is constrained 1 slot ahead (assume $N=1$ for simplicity), and 
 slots are divided into N+2 cycles, (N is security parameter $N \ge 1$), adversary assume winning lottery in the consecutive slots i to i+N, with certain probability, then winning leadership at slot i+N+1 becomes highly probable, only the first block at slot i include a single stake transaction (note staked DRK execution is delayed to slot i+N+1), rest of blocks i+1 to i+N are left with empty transactions, then predicting $\eta_i$ to $\eta_{i+N+1}$ is possible, and thus grinding attack can be executed.
 
 \begin{figure}
-  \includegraphics[width=1.4\textwidth,left]{prob.png}
+  \includegraphics[width=1.2\textwidth,right]{prob.png}
   \caption{probability of attack for different security parameter}
 \end{figure}
 
 
+if we plot that probability of successful attack, for N (security parameter) delayed slots, function of relative stake (see figure 1), from graph we  note that even with 100% of stake,  assuming average secondary controller output f is 0.6 (simulation shows close results), then the probability of successful attack is ~ 1%, for 60% staked ratio, and f is 0.6 probability of successful attack is close to zero.
+
+\subsection {conclusion}
+the omerta attack with perpetual lead is of diminishing probability of success for security parameter $N \ge 9$.
 
 \section{chain fork}
 fork can occur when multiple stakeholders publish proposal for valid proof of leadership.
