@@ -21,13 +21,13 @@ although randomness from the lead stakeholder provider is decentralized, doesn't
 that attack can be prevented by delaying reward proposals from newly staked coins by N slots, N be at least 1, N being a security parameter.
 
 \subsection {omerta attack}
-although selecting key pairs corresponding of $\eta$ with lowest corresponding $y$ using public on-chain data is fixed, it's still possible to make off-chain agreements, for example if the contract execution is delayed N slots, starting at slot i, it's possible through N agreements with winners of slots \emph{i-N} - \emph{i-1}, and since calculation of $\eta$ is predictable, it's possible to pick elect key pair corresponding to lowest \emph{y} at slot i in the future, early at i-N slot.
-note that the off-chain agreement is done with probabilistic winners, it be guaranteed 100%, but once this attack is done once (even if possible with low probability), the adversaries will have high leverage on winning, by mining lowest possible \emph{y}.
+although selecting key pairs corresponding of $\eta$ with lowest corresponding $y$ using public on-chain data is fixed, it's still possible to make off-chain agreements, for example at slot i if the contract execution is delayed N slots, it's possible through N agreements with winners of slots \emph{i} to \emph{i+N}, and since calculation of $\eta$ is predictable, it's possible to pick elect key pair corresponding to lowest \emph{y} at slot i+N+1 in the future, early at i slot.
+note that the off-chain agreement is done with probabilistic winners, but once this attack is done once (even if possible with low probability), the adversaries will have high leverage on winning, by mining lowest possible \emph{y}.
 
 the attack can be fixed, by introducing unpredictable random parameter: $$\eta_i = VRF(\eta_{i-1}||hash(block_{i-2})||slot_i, sk)$$
 
 
-note! secret key is constrained 1 slot ahead (assume $N=1$ for simplicity), and grinding isn't possible since the staked coin is restricted from reward proposals for 1 slot, and $\eta{i-1}$ isn't known yet, omerta attack isn't possible since $hash(block_{i-2}))$ isn't known ahead of time.
+note! secret key is constrained 1 slot ahead (assume $N=1$ for simplicity), and grinding isn't possible since the staked coin is restricted from reward proposals for 1 slot, and $\eta_{i-1}$ isn't known yet, omerta attack isn't possible since $hash(block_{i-2}))$ isn't known ahead of time.
 
 \subsection {perpetual lead with predictable block hash}
 
