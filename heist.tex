@@ -13,8 +13,8 @@
 
 \section {leader election}
 \subsection{democratized random lottery seed}
-randomness $\eta_i$ in the $y$ variable in the leader election comparison, is the output of VRF.
-$$\eta_i=VRF(\eta_{i-1}||slot_{id}, coin_{sk})$$  which is publicly verifiable through $verify(\eta_{i-1}||slot_{id}, coin_{pk})$, where $coin_{pk}$ is constrained as public input, and keypair $(coin_{sk},coin_{pk})$ is protected against grinding attack by published nullifier in the same contract, has advantage over ouroboros, which reduce the grinding effect through multiple queries for the random oracle for favoring high probability of winning by limiting the number of queries to the random oracle.  \cite{ouroboros_genesis}
+at slot i, randomness $\eta_i$ in the $y$ variable in the leader election comparison, is the output of VRF.
+$$\eta_i=VRF(\eta_{i-1}||slot_{i}, coin_{sk})$$  which is publicly verifiable through $verify(\eta_{i-1}||slot_{id}, coin_{pk})$, where $coin_{pk}$ is constrained as public input, and keypair $(coin_{sk},coin_{pk})$ is protected against grinding attack by published nullifier in the same contract, has advantage over ouroboros, which reduce the grinding effect through multiple queries for the random oracle for favoring high probability of winning by limiting the number of queries to the random oracle.  \cite{ouroboros_genesis}
 
 \subsection {grinding $\eta$, and delayed stake contract}
 although randomness from the lead stakeholder provider is decentralized, doesn't reveal identity of the provider, more robust than limited access global random oracle, it's deterministic, predictable, meaning, even with time-locked contracts (see \ref{timelocked}), there is a window between un-stake, and stake contracts, or for new adversarial stakeholder, it's possible to target winning at $slot_{id}$, by trying different key pairs, and picking secret key corresponding with lowest \emph{y} possible.
