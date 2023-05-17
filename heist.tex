@@ -52,7 +52,7 @@ winning stakeholder can choose to fork with a new block, extend a chain, or exte
 
 \subsection{fork finalization}
 finalization is a compound of longest chain, and single leadership frequency, at the end of any slot, finalization, and re-syncing happen when there is single leader per slot, single leader frequency is controller with secondary discrete PID controller in cascade control.
-such mechanism is resilient to bribery attack \cite{attack_bribery}, and NAS attack (when the stakeholder write a transaction in one chain, and rewrite the transaction in parallel chain of equivalent stake, and equal fork depth, using relatively small stake) since probability of winning leadership with single leader frequency at small stake at more than one slot during the fork depth  is of diminishing probability.
+such mechanism is resilient to bribery attack \cite{attack_bribery}, and NAS attack (when the stakeholder write a transaction in one chain, and rewrite the transaction in parallel chain of equivalent stake, and equal fork depth, using relatively small stake) since probability of winning leadership with single leader frequency at small stake at more than one slot during the fork depth  is of negligible probability.
 % TODO exercise what is length of the fork to win two slots for example for someone with even 1,5,10% of stake.
 
 \subsection {finalization degree of freedom}
@@ -60,10 +60,9 @@ it's possible for single lead stakeholder at the end of a fork to honor certain 
 
 \subsection {deterministic finalization}
 if there are multiple chain fork, stakeholder execute rank(blocks), and extend the highest order chain.
-rank perform comparison of  block hash modulo
-$$concatenate(\eta^{canonical}_{-1}||\dots||\eta^{canonical}_{-1-K})$$,
-note that $\eta^{canonical}_{-i}$ means eta at canonical chain at index i from last, k is a security parameter.
-note that blocks of same hash is of diminishing probability, but in such case, the stakeholder can choose either of which if there is such collision between highest ranks.
+rank perform at slot i comparison of block hash modulo $\eta_{i}$
+
+note that blocks of same hash is of negligible probability, but in such case, the stakeholder can choose either of which if there is such collision between highest ranks.
 
 
 \section {time frequency}
